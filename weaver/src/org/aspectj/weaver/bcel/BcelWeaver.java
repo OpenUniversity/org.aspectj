@@ -1671,6 +1671,7 @@ public class BcelWeaver {
 			// Decide if we need to do actual weaving for this class
 			boolean mightNeedToWeave = shadowMungers.size() > 0 || typeMungers.size() > 0 || classType.isAspect()
 					|| world.getDeclareAnnotationOnMethods().size() > 0 || world.getDeclareAnnotationOnFields().size() > 0;
+			mightNeedToWeave = true;
 
 			// May need bridge methods if on 1.5 and something in our hierarchy is
 			// affected by ITDs
