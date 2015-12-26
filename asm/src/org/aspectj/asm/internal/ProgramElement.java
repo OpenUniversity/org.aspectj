@@ -60,6 +60,8 @@ public class ProgramElement implements IProgramElement {
 	public int modifiers;
 	private String handle = null;
 
+        private String customLabel;
+
 	public AsmManager getModel() {
 		return asm;
 	}
@@ -662,6 +664,9 @@ public class ProgramElement implements IProgramElement {
 	}
 
 	public String toLinkLabelString(boolean getFullyQualifiedArgTypes) {
+                if (customLabel != null) {
+                        return customLabel;
+                }
 		String label;
 		if (kind == Kind.CODE || kind == Kind.INITIALIZER) {
 			label = parent.getParent().getName() + ": ";
@@ -849,4 +854,8 @@ public class ProgramElement implements IProgramElement {
 	public String getFullyQualifiedName() {
 		return (String) kvpairs.get("itdfqname");
 	}
+
+        public void setCustomLabel(String customLabel) {
+                this.customLabel = customLabel;
+        }
 }
